@@ -24,6 +24,7 @@
       top: 0;
       left: 0;
       z-index: -1;
+      filter: blur(5px); /* Adjust the blur amount as needed */
       background-color: #00FF00; /* Green background placeholder color */
     }
     video {
@@ -98,14 +99,17 @@
       var countdownElement = document.getElementById('countdown');
 
       function startCountdown() {
+        var audio = new Audio('tick.mp3'); // Replace 'tick.mp3' with your audio file path
+
         countdownElement.textContent = count;
         count--;
 
         if (count >= 0) {
+          audio.play(); // Play audio
           setTimeout(startCountdown, 1000); // Run the countdown every second
         } else {
           // Redirect to another page after countdown finishes
-          window.location.href = 'http://127.0.0.1:5500/launched.html'; // Replace with your URL
+          window.open('http://127.0.0.1:5500/launched.html', '_blank');
         }
       }
 
